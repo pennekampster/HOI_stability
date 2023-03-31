@@ -1,0 +1,26 @@
+{
+    "id": "4AABE0AE",
+    "path": "~/Documents/Git projects/HOI_stability/scripts/Abundance_analysis.R",
+    "project_path": "scripts/Abundance_analysis.R",
+    "type": "r_source",
+    "hash": "894254151",
+    "contents": "",
+    "dirty": true,
+    "created": 1680269696756.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "138,70",
+        "scrollLine": "124"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1680270075,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1680270098362,
+    "read_only": false,
+    "read_only_alternatives": []
+}
