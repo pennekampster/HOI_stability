@@ -424,7 +424,7 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("model_output_Dexio_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelsummary(models, output = here("other_output/model_output_Dexio_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
 modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Dexio_GR_CD.png"), bg = "white", width=7, height=5)
 
@@ -528,7 +528,7 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("model_output_Dexio_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelsummary(models, output = here("other_output/model_output_Dexio_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
 modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Dexio_GR_CDS.png"), bg = "white", width=10, height=7)
 
