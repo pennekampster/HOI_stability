@@ -481,9 +481,9 @@ modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales
 ggsave(here("other_output/model_output_Dexio_GR_CDP.png"), bg = "white", width=10, height=7)
 
 AIC_Dexio_CDP <- AICcmodavg::aictab(models, second.ord = F)
-plot_model(m3, type = "pred", terms = c("Dexio", "Colp", "Para"))
+plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Para"))
 ggsave(here("other_output/Dexio_GR_CDP.png"), width=7,height=5, bg = "white")
-best_Dexio_CDP <- m3
+best_Dexio_CDP <- m5
 
 # Colp in CDP
 
@@ -507,9 +507,9 @@ modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales
 ggsave(here("other_output/model_output_Colp_GR_CDP.png"), bg = "white", width=10, height=7)
 
 AIC_Colp_CDP <- AICcmodavg::aictab(models, second.ord = F)
-plot_model(m2, type = "pred", terms = c("Colp", "Dexio", "Para"), bg = "white")
+plot_model(m5, type = "pred", terms = c("Colp", "Dexio", "Para"), bg = "white")
 ggsave(here("other_output/Colp_GR_CDP.png"), width=7,height=5, bg = "white")
-best_Colp_CDP <- m2
+best_Colp_CDP <- m5
 
 # Dexio in CDS
 
