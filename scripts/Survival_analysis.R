@@ -3,8 +3,7 @@ library("survminer")
 library(tidyverse)
 library(here)
 
-load(here("data/Extinctions.Rdata"))
-Extinction <- Extinction_CDPd
+Extinction <- read_csv(here("data/Extinctions.csv"))
 Extinction <- Extinction %>% group_by(treatment, predict_spec, replicate) %>% summarize(extincation_days = mean(extincation_days, na.rm = T))
 
 Extinction$status <- ifelse(Extinction$extincation_days == 53, 0, 1)

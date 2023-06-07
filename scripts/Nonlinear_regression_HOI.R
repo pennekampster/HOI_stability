@@ -28,7 +28,7 @@ percap_growth_notlogged <- function (x, laggedx, dt)
   return((xrat) * 1/(dt))
 }
 
-load(here("data/Abundance_replicate_mean.Rdata"))
+replicate_mean <- read_csv(here("data/Abundance_replicate_mean.csv"))
 
 # expand the dataset to include all dates where no density was detected and hence abundance = 0.
 exp_design <- replicate_mean %>% filter(NumDays==1) %>% ungroup %>% dplyr::select(replicate, treatment, predict_spec)

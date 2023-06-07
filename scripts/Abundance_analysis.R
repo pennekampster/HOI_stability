@@ -6,7 +6,7 @@ library(gtsummary)
 library(officer);
 library(flextable);
 
-load(here("data/Abundance_replicate_mean.Rdata"))
+replicate_mean <- read_csv(here("data/Abundance_replicate_mean.csv"))
 replicate_mean <- replicate_mean %>% mutate(species = case_when(predict_spec == "Colp" ~ "Colpidium",
                            predict_spec == "Dexio" ~ "Dexiostoma",
                            predict_spec == "Para" ~ "Paramecium",
