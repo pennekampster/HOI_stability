@@ -587,5 +587,47 @@ modelsummary::modelplot(best_models_Colp, coef_omit = 'Interc') + facet_wrap(~te
 ggsave(here("MS_figures/coef_plot_Colp.png"), width=10,height=6, bg = "white")
 
 
+best_mod <- lm(Colp_dNNdt~Colp * Dexio * Spiro, data=Colp_CDS_dat_df[complete.cases(Colp_CDS_dat_df), ])
+est <- effect("Colp", best_mod, partial.residuals=T)
+plot(est, smooth.residuals=T)
+
+
+visreg(best_mod,"Dexio")
+
+
+fit <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
+summary(fit)$coef
+
+airquality$Heat <- cut(airquality$Temp, 3, labels=c("Cool", "Mild", "Hot"))
+fit <- lm(Ozone ~ Solar.R + Wind * Heat, data=airquality)
+visreg(fit, "Wind", by="Heat", layout=c(3,1))
+
+
+library(jtools) # for summ()
+states <- as.data.frame(state.x77)
+fiti <- lm(Income ~ Illiteracy * Murder + `HS Grad`, data = states)
+
+interactions::interact_plot(fiti,
+              pred = Illiteracy,
+              modx = Murder,
+              # centered = "none", # if you don't want the plot to mean-center
+              # modx.values = "plus-minus", # exclude the mean value of the moderator
+              # modx.values = "terciles" # split moderator's distribution into 3 groups
+              plot.points = T, # overlay data
+              point.shape = T, # different shape for differennt levels of the moderator
+              jitter = 0, # if two data points are on top one another, this moves them apart by little
+
+              # other appearance option
+              x.label = "X label",
+              y.label = "Y label",
+              main.title = "Title",
+              legend.main = "Legend Title",
+              colors = "blue",
+
+              # include confidence band
+              interval = F,
+              int.width = 0.9,
+              robust = TRUE # use robust SE
+)
 
 
