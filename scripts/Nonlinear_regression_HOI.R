@@ -533,7 +533,7 @@ modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales
 ggsave(here("other_output/model_output_Dexio_GR_CDS.png"), bg = "white", width=10, height=7)
 
 AIC_Dexio_CDS <- AICcmodavg::aictab(models, second.ord = F)
-plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Spiro"))
+plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Spiro"), show.data=T)
 ggsave(here("other_output/Dexio_GR_CDS.png"), width=7,height=5, bg = "white")
 best_Dexio_CDS <- m5
 
@@ -546,7 +546,7 @@ m4 <- glm(Colp_dNNdt~Colp + I(Colp^2) + Dexio + I(Dexio^2) + Spiro + I(Spiro^2) 
 m5 <- glm(Colp_dNNdt~Colp + Dexio + Spiro, data=Colp_CDS_dat_df[complete.cases(Colp_CDS_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Colp_dNNdt~Colp + Dexio + Spiro + Colp:Dexio + Colp:Spiro + Dexio:Spiro, data=Colp_CDS_dat_df[complete.cases(Colp_CDS_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Colp_CDS <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -555,14 +555,29 @@ models <- list(
   "interactive Ricker" = m6)
 
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Colp_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+modelsummary::modelsummary(models_Colp_CDS, output = here("other_output/model_output_Colp_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Colp_CDS, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Colp_GR_CDS.png"), bg = "white", width=10, height=7)
 
-AIC_Colp_CDS <- AICcmodavg::aictab(models, second.ord = F)
+AIC_Colp_CDS <- AICcmodavg::aictab(models_Colp_CDS, second.ord = F)
 best_Colp_CDS <- m6
 plot_model(best_Colp_CDS, type = "pred", terms = c("Colp", "Dexio", "Spiro"))
 ggsave(here("other_output/Colp_GR_CDS.png"), width=7,height=5, bg = "white")
+
+
+
+best_mod <- models_Colp_CDS[["additive LV"]]
+best_mod2 <- models_Colp_CDS[["interactive Ricker"]]
+est <- effect(c("Colp:Dexio"), best_mod, partial.residuals=T)
+est2 <- effect(c("Colp:Dexio"), best_mod2, partial.residuals=T)
+
+plot(est, smooth.residuals=F)
+plot(est2, smooth.residuals=F, add=T)
+
+est <- effect(c("Colp"), best_mod, partial.residuals=T)
+plot(est, smooth.residuals=T)
+est <- effect(c("Para"), best_mod, partial.residuals=T)
+plot(est, smooth.residuals=T)
 
 
 AIC_table <- rbind(AIC_Colp_CD, AIC_Colp_CDP, AIC_Colp_CDS, AIC_Dexio_CD, AIC_Dexio_CDP, AIC_Dexio_CDS)
@@ -587,9 +602,11 @@ modelsummary::modelplot(best_models_Colp, coef_omit = 'Interc') + facet_wrap(~te
 ggsave(here("MS_figures/coef_plot_Colp.png"), width=10,height=6, bg = "white")
 
 
-best_mod <- lm(Colp_dNNdt~Colp * Dexio * Spiro, data=Colp_CDS_dat_df[complete.cases(Colp_CDS_dat_df), ])
-est <- effect("Colp", best_mod, partial.residuals=T)
-plot(est, smooth.residuals=T)
+
+
+
+
+
 
 
 visreg(best_mod,"Dexio")
