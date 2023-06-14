@@ -416,7 +416,7 @@ m4 <- glm(Dexio_dNNdt~Dexio + I(Dexio^2) + Colp + I(Colp^2) + Dexio:Colp, data=D
 m5 <- glm(Dexio_dNNdt~Dexio + Colp, data=Dexio_CD_dat_df[complete.cases(Dexio_CD_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Dexio_dNNdt~Dexio + Colp + Dexio:Colp, data=Dexio_CD_dat_df[complete.cases(Dexio_CD_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Dexio_CD <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -424,11 +424,11 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Dexio_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+modelsummary::modelsummary(models_Dexio_CD, output = here("other_output/model_output_Dexio_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Dexio_CD, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Dexio_GR_CD.png"), bg = "white", width=7, height=5)
 
-AIC_Dexio_CD <- AICcmodavg::aictab(models, second.ord = F)
+AIC_Dexio_CD <- AICcmodavg::aictab(models_Dexio_CD, second.ord = T)
 plot_model(m4, type = "pred", terms = c("Dexio[0:400]", "Colp"),  show.data = F)
 ggsave(here("other_output/Dexio_GR_CD.png"), bg = "white", height=5, width=7)
 best_Dexio_CD <- m4
@@ -442,7 +442,7 @@ m4 <- glm(Colp_dNNdt~Colp + I(Colp^2) + Dexio + I(Dexio^2) + Colp:Dexio, data=Co
 m5 <- glm(Colp_dNNdt~Colp + Dexio, data=Colp_CD_dat_df[complete.cases(Colp_CD_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Colp_dNNdt~Colp + Dexio + Colp:Dexio, data=Colp_CD_dat_df[complete.cases(Colp_CD_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Colp_CD <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -450,11 +450,11 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Colp_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+modelsummary::modelsummary(models_Colp_CD, output = here("other_output/model_output_Colp_GR_CD.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Colp_CD, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Colp_GR_CD.png"), bg = "white", width=7, height=5)
 
-AIC_Colp_CD <- AICcmodavg::aictab(models, second.ord = F)
+AIC_Colp_CD <- AICcmodavg::aictab(models_Colp_CD, second.ord = T)
 plot_model(m4, type = "pred", terms = c("Colp", "Dexio"),  show.data = F)
 ggsave(here("other_output/Colp_GR_CD.png"), width=7,height=5, bg = "white")
 best_Colp_CD <- m4
@@ -468,7 +468,7 @@ m4 <- glm(Dexio_dNNdt~Dexio + I(Dexio^2) + Colp + I(Colp^2) + Para + I(Para^2) +
 m5 <- glm(Dexio_dNNdt~Dexio + Colp + Para, data=Dexio_CDP_dat_df[complete.cases(Dexio_CDP_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Dexio_dNNdt~Dexio + Colp + Para + Dexio:Colp + Dexio:Para + Colp:Para, data=Dexio_CDP_dat_df[complete.cases(Dexio_CDP_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Dexio_CDP <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -476,11 +476,11 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Dexio_GR_CDP.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+modelsummary::modelsummary(models_Dexio_CDP, output = here("other_output/model_output_Dexio_GR_CDP.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Dexio_CDP, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Dexio_GR_CDP.png"), bg = "white", width=10, height=7)
 
-AIC_Dexio_CDP <- AICcmodavg::aictab(models, second.ord = F)
+AIC_Dexio_CDP <- AICcmodavg::aictab(models_Dexio_CDP, second.ord = T)
 plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Para"))
 ggsave(here("other_output/Dexio_GR_CDP.png"), width=7,height=5, bg = "white")
 best_Dexio_CDP <- m5
@@ -494,7 +494,7 @@ m4 <- glm(Colp_dNNdt~Colp + I(Colp^2) + Dexio + I(Dexio^2)+ Para + I(Para^2) + C
 m5 <- glm(Colp_dNNdt~Colp + Dexio + Para, data=Colp_CDP_dat_df[complete.cases(Colp_CDP_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Colp_dNNdt~Colp + Dexio + Para + Colp:Dexio + Colp:Para + Dexio:Para, data=Colp_CDP_dat_df[complete.cases(Colp_CDP_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Colp_CDP <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -502,11 +502,12 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Colp_GR_CDP.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+
+modelsummary::modelsummary(models_Colp_CDP, output = here("other_output/model_output_Colp_GR_CDP.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Colp_CDP, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Colp_GR_CDP.png"), bg = "white", width=10, height=7)
 
-AIC_Colp_CDP <- AICcmodavg::aictab(models, second.ord = F)
+AIC_Colp_CDP <- AICcmodavg::aictab(models_Colp_CDP, second.ord = T)
 plot_model(m5, type = "pred", terms = c("Colp", "Dexio", "Para"), bg = "white")
 ggsave(here("other_output/Colp_GR_CDP.png"), width=7,height=5, bg = "white")
 best_Colp_CDP <- m5
@@ -520,7 +521,7 @@ m4 <- glm(Dexio_dNNdt~Dexio + I(Dexio^2) + Colp + I(Colp^2) + Spiro + I(Spiro^2)
 m5 <- glm(Dexio_dNNdt~Dexio + Colp + Spiro, data=Dexio_CDS_dat_df[complete.cases(Dexio_CDS_dat_df), ], family = gaussian(link = "log"))
 m6 <- glm(Dexio_dNNdt~Dexio + Colp + Spiro + Dexio:Colp + Dexio:Spiro + Colp:Spiro, data=Dexio_CDS_dat_df[complete.cases(Dexio_CDS_dat_df), ], family = gaussian(link = "log"))
 
-models <- list(
+models_Dexio_CDS <- list(
   "additive LV"    = m1,
   "interactive LV (intra HOI)" = m2,
   "interactive LV (inter HOI)" = m3,
@@ -528,12 +529,12 @@ models <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-modelsummary::modelsummary(models, output = here("other_output/model_output_Dexio_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
-modelsummary::modelplot(models, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
+modelsummary::modelsummary(models_Dexio_CDS, output = here("other_output/model_output_Dexio_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
+modelsummary::modelplot(models_Dexio_CDS, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Dexio_GR_CDS.png"), bg = "white", width=10, height=7)
 
-AIC_Dexio_CDS <- AICcmodavg::aictab(models, second.ord = F)
-plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Spiro"), show.data=T)
+AIC_Dexio_CDS <- AICcmodavg::aictab(models_Dexio_CDS, second.ord = T)
+plot_model(m5, type = "pred", terms = c("Dexio", "Colp", "Spiro"), show.data=F)
 ggsave(here("other_output/Dexio_GR_CDS.png"), width=7,height=5, bg = "white")
 best_Dexio_CDS <- m5
 
@@ -554,36 +555,19 @@ models_Colp_CDS <- list(
   "additive Ricker"     = m5,
   "interactive Ricker" = m6)
 
-
 modelsummary::modelsummary(models_Colp_CDS, output = here("other_output/model_output_Colp_GR_CDS.docx"), fmt = 5, statistic = 'conf.int', gof_map = c("nobs", "aic", "r.squared"))
 modelsummary::modelplot(models_Colp_CDS, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
 ggsave(here("other_output/model_output_Colp_GR_CDS.png"), bg = "white", width=10, height=7)
 
-AIC_Colp_CDS <- AICcmodavg::aictab(models_Colp_CDS, second.ord = F)
+AIC_Colp_CDS <- AICcmodavg::aictab(models_Colp_CDS, second.ord = T)
 best_Colp_CDS <- m6
 plot_model(best_Colp_CDS, type = "pred", terms = c("Colp", "Dexio", "Spiro"))
 ggsave(here("other_output/Colp_GR_CDS.png"), width=7,height=5, bg = "white")
 
-
-
-best_mod <- models_Colp_CDS[["additive LV"]]
-best_mod2 <- models_Colp_CDS[["interactive Ricker"]]
-est <- effect(c("Colp:Dexio"), best_mod, partial.residuals=T)
-est2 <- effect(c("Colp:Dexio"), best_mod2, partial.residuals=T)
-
-plot(est, smooth.residuals=F)
-plot(est2, smooth.residuals=F, add=T)
-
-est <- effect(c("Colp"), best_mod, partial.residuals=T)
-plot(est, smooth.residuals=T)
-est <- effect(c("Para"), best_mod, partial.residuals=T)
-plot(est, smooth.residuals=T)
-
-
 AIC_table <- rbind(AIC_Colp_CD, AIC_Colp_CDP, AIC_Colp_CDS, AIC_Dexio_CD, AIC_Dexio_CDP, AIC_Dexio_CDS)
 AIC_table$growth <- rep(c("Colp", "Dexio"), each=18)
 AIC_table$community <- rep(c("CD", "CDP", "CDS"), each=6)
-write_excel_csv(AIC_table, here("AIC_table_HOIs.csv"))
+write_excel_csv(AIC_table, here("MS_tables/AIC_table_HOIs.csv"))
 
 best_models_Dexio <- list(
   "Dexio CD"    = best_Dexio_CD,
@@ -602,6 +586,146 @@ modelsummary::modelplot(best_models_Colp, coef_omit = 'Interc') + facet_wrap(~te
 ggsave(here("MS_figures/coef_plot_Colp.png"), width=10,height=6, bg = "white")
 
 
+# produce plots that show the fit of the best versus the simplest model (additive LV model)
+library("gridExtra") 
+
+# CD community
+null_mod_Dexio_CD <- models_Dexio_CD[["additive LV"]]
+best_mod_Dexio_CD <- models_Dexio_CD[["interactive LV (intra HOI)"]]
+
+est <- Effect(c("Dexio", "Colp"), null_mod_Dexio_CD, partial.residuals=T, confint=T)
+est2 <- Effect(c("Dexio", "Colp"), best_mod_Dexio_CD, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Dexio_CD_null.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CD_best.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (interactive LV model (intra HOI))"))
+dev.off()
+
+null_mod_Colp_CD <- models_Colp_CD[["additive LV"]]
+best_mod_Colp_CD <- models_Colp_CD[["interactive LV (intra HOI)"]]
+
+est <- Effect(c("Colp", "Dexio"), null_mod_Colp_CD, partial.residuals=T, confint=T)
+est2 <- Effect(c("Colp", "Dexio"), best_mod_Colp_CD, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Colp_CD_null.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Colp in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CD_best.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F, main=paste("Interaction plot for Colp in CD (interactive LV model (intra HOI))"))
+dev.off()
+
+# CDP community
+null_mod_Dexio_CDP <- models_Dexio_CDP[["additive LV"]]
+best_mod_Dexio_CDP <- models_Dexio_CDP[["additive Ricker"]]
+
+est <- Effect(c("Dexio", "Colp"), null_mod_Dexio_CDP, partial.residuals=T, confint=T)
+est_b <- Effect(c("Dexio", "Para"), null_mod_Dexio_CDP, partial.residuals=T, confint=T)
+est_c <- Effect(c("Colp", "Para"), null_mod_Dexio_CDP, partial.residuals=T, confint=T)
+
+est2 <- Effect(c("Dexio", "Colp"), best_mod_Dexio_CDP, partial.residuals=T, confint=T)
+est2_b <- Effect(c("Dexio", "Para"), best_mod_Dexio_CDP, partial.residuals=T, confint=T)
+est2_c <- Effect(c("Colp", "Para"), best_mod_Dexio_CDP, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Dexio_CDP_null1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDP_null2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDP_null3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+
+png(here("other_output/Model_fits_Dexio_CDP_best1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDP_best2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_b, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDP_best3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_c, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
+
+
+null_mod_Colp_CDP <- models_Colp_CDP[["additive LV"]]
+best_mod_Colp_CDP <- models_Colp_CDP[["additive Ricker"]]
+
+
+est <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
+est_b <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
+est_c <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
+
+est2 <- Effect(c("Colp", "Dexio"), best_mod_Colp_CDP, partial.residuals=T, confint=T)
+est2_b <- Effect(c("Colp", "Para"), best_mod_Colp_CDP, partial.residuals=T, confint=T)
+est2_c <- Effect(c("Dexio", "Para"), best_mod_Colp_CDP, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Colp_CDP_null1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_null2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_null3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+
+png(here("other_output/Model_fits_Colp_CDP_best1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_best2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_b, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_best3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_c, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
+
+
+
+
+
+
+# CDS community
+null_mod_Dexio_CDS <- models_Dexio_CDS[["additive LV"]]
+best_mod_Dexio_CDS <- models_Dexio_CDS[["additive Ricker"]]
+
+est <- Effect(c("Dexio", "Colp"), null_mod_Dexio_CDS, partial.residuals=T, confint=T)
+est_b <- Effect(c("Dexio", "Spiro"), null_mod_Dexio_CDS, partial.residuals=T, confint=T)
+est_c <- Effect(c("Colp", "Spiro"), null_mod_Dexio_CDS, partial.residuals=T, confint=T)
+
+est2 <- Effect(c("Dexio", "Colp"), best_mod_Dexio_CDS, partial.residuals=T, confint=T)
+est2_b <- Effect(c("Dexio", "Spiro"), best_mod_Dexio_CDS, partial.residuals=T, confint=T)
+est2_c <- Effect(c("Colp", "Spiro"), best_mod_Dexio_CDS, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Dexio_CDS_null1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDS_null2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDS_null3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+dev.off()
+
+png(here("other_output/Model_fits_Dexio_CDS_best1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDS_best2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_b, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Dexio_CDS_best3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_c, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+dev.off()
 
 
 
@@ -609,42 +733,41 @@ ggsave(here("MS_figures/coef_plot_Colp.png"), width=10,height=6, bg = "white")
 
 
 
-visreg(best_mod,"Dexio")
+null_mod_Colp_CDS <- models_Colp_CDS[["additive LV"]]
+best_mod_Colp_CDS <- models_Colp_CDS[["interactive Ricker"]]
+
+est <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDS, partial.residuals=T, confint=T)
+est_b <- Effect(c("Colp", "Spiro"), null_mod_Colp_CDS, partial.residuals=T, confint=T)
+est_c <- Effect(c("Dexio", "Spiro"), null_mod_Colp_CDS, partial.residuals=T, confint=T)
+
+est2 <- Effect(c("Colp", "Dexio"), best_mod_Colp_CDS, partial.residuals=T, confint=T)
+est2_b <- Effect(c("Colp", "Spiro"), best_mod_Colp_CDS, partial.residuals=T, confint=T)
+est2_c <- Effect(c("Dexio", "Spiro"), best_mod_Colp_CDS, partial.residuals=T, confint=T)
+
+png(here("other_output/Model_fits_Colp_CDP_null1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_null2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_null3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+dev.off()
+
+png(here("other_output/Model_fits_Colp_CDP_best1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_best2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_b, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
+png(here("other_output/Model_fits_Colp_CDP_best3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est2_c, smooth.residuals=F,
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+dev.off()
 
 
-fit <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
-summary(fit)$coef
-
-airquality$Heat <- cut(airquality$Temp, 3, labels=c("Cool", "Mild", "Hot"))
-fit <- lm(Ozone ~ Solar.R + Wind * Heat, data=airquality)
-visreg(fit, "Wind", by="Heat", layout=c(3,1))
 
 
-library(jtools) # for summ()
-states <- as.data.frame(state.x77)
-fiti <- lm(Income ~ Illiteracy * Murder + `HS Grad`, data = states)
-
-interactions::interact_plot(fiti,
-              pred = Illiteracy,
-              modx = Murder,
-              # centered = "none", # if you don't want the plot to mean-center
-              # modx.values = "plus-minus", # exclude the mean value of the moderator
-              # modx.values = "terciles" # split moderator's distribution into 3 groups
-              plot.points = T, # overlay data
-              point.shape = T, # different shape for differennt levels of the moderator
-              jitter = 0, # if two data points are on top one another, this moves them apart by little
-
-              # other appearance option
-              x.label = "X label",
-              y.label = "Y label",
-              main.title = "Title",
-              legend.main = "Legend Title",
-              colors = "blue",
-
-              # include confidence band
-              interval = F,
-              int.width = 0.9,
-              robust = TRUE # use robust SE
-)
-
-
+  
