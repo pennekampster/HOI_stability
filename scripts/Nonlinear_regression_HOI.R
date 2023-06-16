@@ -629,26 +629,26 @@ est2_b <- Effect(c("Dexio", "Para"), best_mod_Dexio_CDP, partial.residuals=T, co
 est2_c <- Effect(c("Colp", "Para"), best_mod_Dexio_CDP, partial.residuals=T, confint=T)
 
 png(here("other_output/Model_fits_Dexio_CDP_null1.png"), bg = "white", width=1024, height=768, res=150)
-plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDP (additive LV model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDP_null2.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDP (additive LV model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDP_null3.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDP (additive LV model)"))
 dev.off()
 
 png(here("other_output/Model_fits_Dexio_CDP_best1.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDP (additive Ricker model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDP_best2.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_b, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDP (additive Ricker model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDP_best3.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_c, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDP (additive Ricker model)"))
 dev.off()
 
 
@@ -657,8 +657,8 @@ best_mod_Colp_CDP <- models_Colp_CDP[["additive Ricker"]]
 
 
 est <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
-est_b <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
-est_c <- Effect(c("Colp", "Dexio"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
+est_b <- Effect(c("Colp", "Para"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
+est_c <- Effect(c("Dexio", "Para"), null_mod_Colp_CDP, partial.residuals=T, confint=T)
 
 est2 <- Effect(c("Colp", "Dexio"), best_mod_Colp_CDP, partial.residuals=T, confint=T)
 est2_b <- Effect(c("Colp", "Para"), best_mod_Colp_CDP, partial.residuals=T, confint=T)
@@ -705,26 +705,26 @@ est2_b <- Effect(c("Dexio", "Spiro"), best_mod_Dexio_CDS, partial.residuals=T, c
 est2_c <- Effect(c("Colp", "Spiro"), best_mod_Dexio_CDS, partial.residuals=T, confint=T)
 
 png(here("other_output/Model_fits_Dexio_CDS_null1.png"), bg = "white", width=1024, height=768, res=150)
-plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDS (additive LV model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDS_null2.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDS (additive LV model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDS_null3.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CD (additive LV model)"))
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Dexio in CDS (additive LV model)"))
 dev.off()
 
 png(here("other_output/Model_fits_Dexio_CDS_best1.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDS (additive Ricker model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDS_best2.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_b, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDS (additive Ricker model)"))
 dev.off()
 png(here("other_output/Model_fits_Dexio_CDS_best3.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_c, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CD (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Dexio in CDS (additive Ricker model)"))
 dev.off()
 
 
@@ -744,27 +744,27 @@ est2 <- Effect(c("Colp", "Dexio"), best_mod_Colp_CDS, partial.residuals=T, confi
 est2_b <- Effect(c("Colp", "Spiro"), best_mod_Colp_CDS, partial.residuals=T, confint=T)
 est2_c <- Effect(c("Dexio", "Spiro"), best_mod_Colp_CDS, partial.residuals=T, confint=T)
 
-png(here("other_output/Model_fits_Colp_CDP_null1.png"), bg = "white", width=1024, height=768, res=150)
-plot(est, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+png(here("other_output/Model_fits_Colp_CDS_null1.png"), bg = "white", width=1024, height=768, res=150)
+plot(est, smooth.residuals=F, main=paste("Interaction plot for Colp in CDS (additive LV model)"))
 dev.off()
-png(here("other_output/Model_fits_Colp_CDP_null2.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+png(here("other_output/Model_fits_Colp_CDS_null2.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_b, smooth.residuals=F, main=paste("Interaction plot for Colp in CDS (additive LV model)"))
 dev.off()
-png(here("other_output/Model_fits_Colp_CDP_null3.png"), bg = "white", width=1024, height=768, res=150)
-plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Colp in CDP (additive LV model)"))
+png(here("other_output/Model_fits_Colp_CDS_null3.png"), bg = "white", width=1024, height=768, res=150)
+plot(est_c, smooth.residuals=F, main=paste("Interaction plot for Colp in CDS (additive LV model)"))
 dev.off()
 
-png(here("other_output/Model_fits_Colp_CDP_best1.png"), bg = "white", width=1024, height=768, res=150)
+png(here("other_output/Model_fits_Colp_CDS_best1.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDS (additive Ricker model)"))
 dev.off()
-png(here("other_output/Model_fits_Colp_CDP_best2.png"), bg = "white", width=1024, height=768, res=150)
+png(here("other_output/Model_fits_Colp_CDS_best2.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_b, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDS (additive Ricker model)"))
 dev.off()
-png(here("other_output/Model_fits_Colp_CDP_best3.png"), bg = "white", width=1024, height=768, res=150)
+png(here("other_output/Model_fits_Colp_CDS_best3.png"), bg = "white", width=1024, height=768, res=150)
 plot(est2_c, smooth.residuals=F,
-     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDP (additive Ricker model)"))
+     axes=list(y=list(type="response")), main=paste("Interaction plot for Colp in CDS (additive Ricker model)"))
 dev.off()
 
 
