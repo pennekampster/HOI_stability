@@ -27,7 +27,9 @@ replicate_mean$species <- factor(replicate_mean$species, levels=c("Colpidium", "
 ggplot(data=subset(replicate_mean, predict_spec != "Noise"), aes(x=NumDays, y=mean.dens.ml+1, group=species, colour=species)) + geom_point() +
   geom_path(aes(group=species)) + facet_grid(treatment~replicate) + scale_y_continuous(trans = "sqrt", breaks=c(0,100,200,400, 600))  + theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "top") +
   ylab("Mean density per mL") + xlab("Time (in days)") + guides(colour = guide_legend("Species")) + scale_x_continuous(breaks=c(0, 10, 20, 30, 40, 50))
-ggsave(here("MS_figures/figure1.png"), width=7, height=10)
+ggsave(here("MS_figures/figure2.png"), width=7, height=10)
+ggsave(here("MS_figures/figure2.pdf"), dpi=600, width=3800, height=5400, units = "px")
+
 
 replicate_mean <- replicate_mean %>% filter(predict_spec != "Noise") %>% 
   group_by(treatment, replicate, predict_spec) %>% 
@@ -106,7 +108,8 @@ ggplot(data=plot_df, aes(x=predation, y=log(mean_dens), group=treatment, colour=
     colour = guide_legend("Food web configuration"),
     shape = guide_none("Interaction")
   ) + facet_wrap(.~species, ncol=5)
-ggsave(here("MS_figures/figure2.png"), width=8, height=4)
+ggsave(here("MS_figures/figure3.png"), width=8, height=4)
+ggsave(here("MS_figures/figure3.pdf"), dpi=600, width=4000, height=2000, units = "px")
 
 
 mod_dexio <- lm(log(mean_dens)~predation*competitor, data=subset(replicate_mean, predict_spec == "Dexio"))

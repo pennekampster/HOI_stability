@@ -575,7 +575,7 @@ best_models_Dexio <- list(
   "Dexio CDS" = best_Dexio_CDS)
 
 modelsummary::modelplot(best_models_Dexio, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
-ggsave(here("MS_figures/coef_plot_Dexio.png"), width=10,height=6, bg = "white")
+ggsave(here("other_output/coef_plot_Dexio.png"), width=10,height=6, bg = "white")
 
 best_models_Colp <- list(
   "Colp CD" = best_Colp_CD,
@@ -583,7 +583,7 @@ best_models_Colp <- list(
   "Colp CDS" = best_Colp_CDS)
 
 modelsummary::modelplot(best_models_Colp, coef_omit = 'Interc') + facet_wrap(~term, scales = "free") + geom_vline(xintercept=0, linetype="dashed") + theme(axis.text.y = element_blank(), legend.position = "bottom")
-ggsave(here("MS_figures/coef_plot_Colp.png"), width=10,height=6, bg = "white")
+ggsave(here("other_output/coef_plot_Colp.png"), width=10,height=6, bg = "white")
 
 
 # produce plots that show the fit of the best versus the simplest model (additive LV model)

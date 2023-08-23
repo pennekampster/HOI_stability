@@ -170,4 +170,5 @@ splots[[5]]$plot<-splots[[5]]$plot + labs(tag="D")
 # Arrange and save into pdf file
 surv_plot <- arrange_ggsurvplots(splots, print = F, ncol = 2, nrow = 3)
 ggsave(here("MS_figures/figure4.png"), surv_plot,  width=10, height=15)
+ggsave(here("MS_figures/figure4.pdf"), surv_plot, dpi=600, width=6400, height=9200, units = "px")
 
