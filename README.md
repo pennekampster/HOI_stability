@@ -1,8 +1,14 @@
 # Data and code for "Connecting higher order interactions with ecological stability in experimental aquatic food webs"
 
 This repository contains code and data needed to reproduce:
-https://www.biorxiv.org/content/10.1101/2023.05.04.539390v2
+https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.10502
 
 ## Instructions
-All analyses were done in R. R scripts are in the respective 'scripts' folder. 
-All data needed to reproduce the analyses are available in the 'data' folder.
+Data to reproduce the analyses are available in the 'data' folder.
+A csv file that describes the metadata can be found in the 'metadata' folder.
+Analyses were done in R and associated R scripts are deposited in the 'scripts' folder. 
+
+Official data and code repository:
+[![DOI](https://10.5281/zenodo.7896203)](https://10.5281/zenodo.7896203)
+
+<a href="10.5281/zenodo.7896203"><img src="10.5281/zenodo.7896203.svg" alt="DOI"></a>
