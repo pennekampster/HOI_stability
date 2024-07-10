@@ -1,0 +1,11 @@
+﻿dataset,column,type,description
+Abundance_replicate_mean.csv,replicate,integer,replicate label
+Abundance_replicate_mean.csv,NumDays,integer,time since start of experiment in days
+Abundance_replicate_mean.csv,treatment,character,food web configuration
+Abundance_replicate_mean.csv,predict_spec,character,species name
+Abundance_replicate_mean.csv,mean.dens.ml,numeric,density per mL
+Extinctions.csv,treatment,character,food web configuration
+Extinctions.csv,replicate,integer,replicate label
+Extinctions.csv,sample,integer,sample label
+Extinctions.csv,predict_spec,character,species name
+Extinctions.csv,extincation_days,integer,last day when species was observed
